@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Building {
 
-    private static volatile int Expected = 50;
+    private static int Expected = 50;
     public static void main(String[] args) {
 
         ReentrantLock lock = new ReentrantLock(true);

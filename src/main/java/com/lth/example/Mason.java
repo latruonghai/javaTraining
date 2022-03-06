@@ -14,6 +14,7 @@ public class Mason extends Thread {
 
     Random rand = new Random();
     private ReentrantLock lock;
+
     public Mason(int MAX_RESOURCES, int Expected, ReentrantLock lock) {
         this.MAX_RESOURCES = MAX_RESOURCES;
         this.lock = lock;
@@ -22,6 +23,9 @@ public class Mason extends Thread {
         this.KPI = 0;
     }
 
+    /*
+    * Method for mason to get new resources
+    * */
     public void setMaxresources(int MAX_RESOURCES){
         this.lock.lock();
         try{
@@ -39,6 +43,9 @@ public class Mason extends Thread {
             this.lock.unlock();
         }
     }
+    /*
+    * Method to give resources for builders
+    * */
     public Pair<Integer, Integer> getMaxResourcesForBuilder(){
         lock.lock();
         try{
@@ -53,6 +60,10 @@ public class Mason extends Thread {
         }
 
     }
+    /*
+    * Mason tries to get new resources everytime he ran out of resources.
+    *
+    * */
     @Override
     public void run(){
         while(this.Expected>0) {
@@ -64,6 +75,9 @@ public class Mason extends Thread {
         System.out.println("Used " + this.KPI + " resources to gain KPI");
     }
 //    private void setResources()
+    /*
+    * Mason tries to give resources for builders to continue building
+    * */
     public Pair<Integer, Integer> getMaxResources(){
 //        if(this.MAX_RESOURCES <=0 && this.Expected >=0){
 //            this.setMaxresources(this.Expected >=0 ? rand.nextInt(7):0);
