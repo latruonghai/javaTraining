@@ -38,7 +38,14 @@ public class Builder extends Thread {
         while(true ){
             if (this.resources <=0 ){
                 System.out.println(this.name + " Require resources!!");
-               Pair<Integer, Integer> resourcesAndExpected = mason.getMaxResources();
+                Pair<Integer, Integer> resourcesAndExpected;
+                lock.lock();
+                try{
+                   resourcesAndExpected = mason.getMaxResources();
+                }
+                finally{
+                   lock.unlock();
+                }
 //               System.out.println(resourcesAndExpected.getValue1());
                 /*
                 * There are two cases:
