@@ -3,7 +3,7 @@ package com.lth.threadExample;
 import java.util.concurrent.Semaphore;
 public class SemaphoreExample {
 
-    private static Semaphore semaphore = new Semaphore(4);
+    private static final Semaphore semaphore = new Semaphore(4);
 
     public static void main(String[] args) {
         System.out.println("Total available Semaphore permits: " + semaphore.availablePermits());
